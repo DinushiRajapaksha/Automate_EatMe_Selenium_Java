@@ -7,33 +7,28 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class pom {
 
     public static void main(String[] args) {
-        // Create a new Chrome driver
+        
         WebDriver driver = new ChromeDriver();
-
-        // Navigate to the restaurant website's home page
+        
         driver.get("https://order.eatmeglobal.org/sg/entre-nouscreperie-?id=b2eed485-a8b9-42b3-a63c-225f9ed6d021&diningMode=pickup");
         driver.manage().window().maximize();
 
         try {
            
-
             // Create instances of Page Objects for Home Page and Basket Page
             HomePage homePage = new HomePage(driver);
             BasketPage basketPage = new BasketPage(driver);
-
-            // Interact with the home page
+            
             homePage.closePopup();
             homePage.clickContinueButton();
-             homePage.clickFinishButton();
+            homePage.clickFinishButton();
             homePage.clickSearchButton();
             homePage.enterSearchQuery("Chocolate Ice Cream");
             homePage.clickChocolateIceCream();
             homePage.clickRadioButton();
-
-            // Add the selected item to the basket
             homePage.clickAddToBasketButton();
 
-            // Interact with the basket page
+           
             basketPage.enterPhoneNumber("076803725");
         } finally {
             // Close the browser when done
@@ -47,7 +42,6 @@ class HomePage {
     private WebDriver driver;
     
     // Define locators for elements on the home page
-   // private By popupButtonLocator = By.id("onesignal-slidedown-cancel-button");
     private By continueButtonLocator = By.id("mui-13");
     private By finishButtonLocator = By.id("mui-13");
     private By searchButtonLocator = By.xpath("//*[@id='root']/div/div[1]/div[2]/div[1]/div/button[2]");
